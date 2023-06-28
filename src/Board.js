@@ -5,7 +5,9 @@ class Board extends React.Component {
   renderBox(i) {
     return (
       <Box
+        key={i}
         value={this.props.board[i]}
+        onClick={() => this.props.onClick(i)}
       />
     );
   }

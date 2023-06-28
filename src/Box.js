@@ -1,8 +1,10 @@
 function Box(props){
   return (
-    <button className="box" >
-      {props.value}
-    </button>
+    <div className="box">
+      <button className={props.value} onClick={props.onClick} >
+        {props.value}
+      </button>
+    </div>
   );
 }
 
