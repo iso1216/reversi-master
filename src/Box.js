@@ -1,10 +1,9 @@
 function Box(props){
   return (
-    <div className="box">
-      <button className={props.value} onClick={props.onClick} >
-        {props.value}
+    <button className="box" onClick={props.onClick} disabled={props.value !== 'pick'}>
+      <button className={props.value} disabled={props.value !== 'pick'}>
       </button>
-    </div>
+    </button>
   );
 }
 

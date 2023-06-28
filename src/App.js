@@ -1,69 +1,70 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Board from './Board';
-import Checker from './checker';
 
-class App extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      board: Array(64).fill("empty"),
-      player: true,
-      view: false,
-    };
+const App = () => {
+  const [board, setBoard] = useState(Array(64).fill("empty"));
+  const [player, setPlayer] = useState(true);
+  const [view, setView] = useState(false);
+
+  const Checker = (updateBoard) => {
+    for (let index = 0; index < updateBoard.length; index++) {
+      if (updateBoard[index] === "black" || updateBoard[index] === "white"){
+        for (let i = -1; i <= 1; i++){
+          for (let j = -1; j <=1; j++){
+            if (index%8===0 && j===-1) continue;
+            if (index%8===7 && j===1) continue;
+            if (updateBoard[index+j+(8*i)]==="empty") updateBoard[index+j+(8*i)]="pick";
+          }
+        }
+      }
+    }
+    return updateBoard;
   }
 
-  startGame() {
-    const board = Array(64).fill("empty");
-    board[27]='white';
-    board[28]='black';
-    board[35]='black';
-    board[36]='white';
-    this.setState({
-      board: board,
-      view: true,
-    })
+  const startGame = () => {
+    const newBoard = Array(64).fill("empty");
+    newBoard[27] = 'white';
+    newBoard[28] = 'black';
+    newBoard[35] = 'black';
+    newBoard[36] = 'white';
+    setBoard(Checker(newBoard));
+    setView(true);
   }
 
-  handleClick(i){
-    const board = this.state.board.slice();
-    if(board[i] !== "empty") return;
-    board[i] = this.state.player ? 'white' : 'black';
-    this.setState({
-      board: board,
-      player: !this.state.player
-    });
+  const handleClick = (i) => {
+    const newBoard = [...board];
+    newBoard[i] = player ? 'white' : 'black';
+    setBoard(Checker(newBoard));
+    setPlayer(!player);
   }
 
-  viewBoard(){
+  const viewBoard = () => {
     return (
-    <div className='game-board'>
-      <Board
-        board={this.state.board}
-        onClick={(i) => this.handleClick(i)}
-      />
-      <button onClick={()=>this.startGame()}>再試合</button>
-    </div>
+      <div className='game-board'>
+        <Board
+          board={board}
+          onClick={(i) => handleClick(i)}
+        />
+        <button onClick={() => startGame()}>再試合</button>
+      </div>
     );
   }
 
-  viewStart(){
+  const viewStart = () => {
     return (
       <div className='LP'>
-        <button onClick={()=>this.startGame()}>スタート！！！</button>
+        <button onClick={() => startGame()}>スタート！！！</button>
       </div>
     );
   }
-  render(){
-    return (
-      <div className="App">
-        <div className='game'>
-          {this.state.view ? 
-          this.viewBoard() : 
-          this.viewStart()}
-        </div>
+
+  return (
+    <div className="App">
+      <div className='game'>
+        {view ? viewBoard() : viewStart()}
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default App;

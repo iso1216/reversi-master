@@ -24,7 +24,33 @@ body {
   width: 70px;
 }
 
-.empty{
+.black {
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  background-color: black;
+  margin: 10%;
+}
+
+.white {
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  background-color: white;
+  margin: 10%;
+}
+
+.pick {
+  width: 20%;
+  height: 20%;
+  border-radius: 50%;
+  border: none;
+  background-color: aliceblue;
+  opacity: 0.3;
+  margin: 40%;
+}
+
+.empty {
   height: 100%;
   width: 100%;
   background-color: transparent;
