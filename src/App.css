@@ -9,6 +9,7 @@ body {
   display: table;
 }
 
+/*　盤面　*/
 .box {
   background: rgb(0, 154, 0);
   border: 1px solid #000;
@@ -24,6 +25,7 @@ body {
   width: 70px;
 }
 
+/*　黒石　*/
 .black {
   width: 80%;
   height: 80%;
@@ -32,6 +34,7 @@ body {
   margin: 10%;
 }
 
+/*　白石　*/
 .white {
   width: 80%;
   height: 80%;
@@ -40,6 +43,7 @@ body {
   margin: 10%;
 }
 
+/*　置ける場所を示す　*/
 .pick {
   width: 20%;
   height: 20%;
@@ -50,6 +54,7 @@ body {
   margin: 40%;
 }
 
+/*　なにもなし　*/
 .empty {
   height: 100%;
   width: 100%;

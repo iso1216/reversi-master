@@ -6,6 +6,7 @@ const App = () => {
   const [player, setPlayer] = useState(true);
   const [view, setView] = useState(false);
 
+  /*　石を置ける場所の判定　*/
   const Checker = (updateBoard) => {
     for (let index = 0; index < updateBoard.length; index++) {
       if (updateBoard[index] === "black" || updateBoard[index] === "white"){
@@ -21,6 +22,7 @@ const App = () => {
     return updateBoard;
   }
 
+  /*　初期配置の設置　*/
   const startGame = () => {
     const newBoard = Array(64).fill("empty");
     newBoard[27] = 'white';
@@ -31,6 +33,7 @@ const App = () => {
     setView(true);
   }
 
+  /*　石を置く機能　*/
   const handleClick = (i) => {
     const newBoard = [...board];
     newBoard[i] = player ? 'white' : 'black';
@@ -38,6 +41,7 @@ const App = () => {
     setPlayer(!player);
   }
 
+  /*　ゲーム盤面　*/
   const viewBoard = () => {
     return (
       <div className='game-board'>
@@ -50,6 +54,7 @@ const App = () => {
     );
   }
 
+  /*　最初の画面　*/
   const viewStart = () => {
     return (
       <div className='LP'>

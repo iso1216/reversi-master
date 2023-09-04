@@ -2,6 +2,7 @@ import Box from "./Box";
 import React from "react";
 
 class Board extends React.Component {
+  /*　一つのマス　*/
   renderBox(i) {
     return (
       <Box
@@ -12,6 +13,7 @@ class Board extends React.Component {
     );
   }
 
+  /*　8×8のマスの作成　*/
   render() {
     const edge = [0, 1, 2, 3, 4, 5, 6, 7];
     return (
