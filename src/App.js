@@ -1,22 +1,20 @@
 import React, { useState } from 'react';
 import Board from './Board';
+import { CheckReverse } from './CheckReverse';
+import { Reverse } from './Reverse';
 
 const App = () => {
   const [board, setBoard] = useState(Array(64).fill("empty"));
   const [player, setPlayer] = useState(true);
   const [view, setView] = useState(false);
+  const color = ["white", "black"];
 
   /*　石を置ける場所の判定　*/
   const Checker = (updateBoard) => {
+    let flg = player ? 0 : 1;
     for (let index = 0; index < updateBoard.length; index++) {
-      if (updateBoard[index] === "black" || updateBoard[index] === "white"){
-        for (let i = -1; i <= 1; i++){
-          for (let j = -1; j <=1; j++){
-            if (index%8===0 && j===-1) continue;
-            if (index%8===7 && j===1) continue;
-            if (updateBoard[index+j+(8*i)]==="empty") updateBoard[index+j+(8*i)]="pick";
-          }
-        }
+      if (updateBoard[index] === color[1-flg]){
+        updateBoard = CheckReverse(updateBoard, index, flg, color);
       }
     }
     return updateBoard;
@@ -29,7 +27,12 @@ const App = () => {
     newBoard[28] = 'black';
     newBoard[35] = 'black';
     newBoard[36] = 'white';
-    setBoard(Checker(newBoard));
+    newBoard[20] = 'pick';
+    newBoard[29] = 'pick';
+    newBoard[34] = 'pick';
+    newBoard[43] = 'pick';
+    setBoard(newBoard);
+    setPlayer(true);
     setView(true);
   }
 
@@ -37,7 +40,10 @@ const App = () => {
   const handleClick = (i) => {
     const newBoard = [...board];
     newBoard[i] = player ? 'white' : 'black';
-    setBoard(Checker(newBoard));
+    for (let index = 0; index < newBoard.length; index++) {
+      if (!(newBoard[index] === "black" || newBoard[index] === "white"))newBoard[index] = "empty";
+    }
+    setBoard(Checker(Reverse(newBoard, i, color)));
     setPlayer(!player);
   }
 
