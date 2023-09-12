@@ -1,38 +1,77 @@
-.App {
+body {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 20px;
+}
+
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+/*　盤面　*/
+.box {
+  background: rgb(0, 154, 0);
+  border: 1px solid #000;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 70px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
   text-align: center;
+  width: 70px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/*　黒石　*/
+.black {
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  background-color: black;
+  margin: 10%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/*　白石　*/
+.white {
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  background-color: white;
+  margin: 10%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/*　置ける場所を示す　*/
+.pick {
+  width: 20%;
+  height: 20%;
+  border-radius: 50%;
+  border: none;
+  background-color: aliceblue;
+  opacity: 0.3;
+  margin: 40%;
+}
+
+/*　なにもなし　*/
+.empty {
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+}
+
+.box:focus {
+  outline: none;
+}
+
+.kbd-navigation .box:focus {
+  background: #ddd;
+}
+
+.App {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  align-items: center;
 }
