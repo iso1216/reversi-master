@@ -1,31 +1,24 @@
-import Box from "./Box";
-import React from "react";
+import { Box } from '@mui/material';
+import React from 'react';
+import Space from './Space';
 
-class Board extends React.Component {
-  /*　一つのマス　*/
-  renderBox(i) {
-    return (
-      <Box
-        key={i}
-        value={this.props.board[i]}
-        onClick={() => this.props.onClick(i)}
-      />
-    );
-  }
-
-  /*　8×8のマスの作成　*/
-  render() {
-    const edge = [0, 1, 2, 3, 4, 5, 6, 7];
-    return (
-      <div>
-        {edge.map((index) => (
-          <div className="board-row" key={index}>
-            {edge.map((number) => this.renderBox(number + 8 * index))}
-          </div>
+const Board = ({board, onClick}) => {
+  // 盤面を描画する関数
+  const renderBoard = () => {
+    return board.map((row, rowIndex) => (
+      <Box key={rowIndex} sx={{ display: 'flex' }}>
+        {row.map((cell, cellIndex) => (
+          <Space key={cellIndex} row={rowIndex} cell={cellIndex} board={board} onClick={() => onClick(rowIndex, cellIndex)} />
         ))}
-      </div>
-    );
-  }
-}
+      </Box>
+    ));
+  };
+
+  return (
+    <Box>
+      {renderBoard()}
+    </Box>
+  );
+};
 
 export default Board;
