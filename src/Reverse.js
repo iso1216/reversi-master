@@ -34,10 +34,14 @@ export const Reverse = (board, i, j, player) => {
       });
     }
   });
+
+  // 置ける場所の確認
   let checkList = [];
   board.map((row, rowIndex) => 
     row.map((cell, cellIndex) => cell === !player && checkList.push([rowIndex, cellIndex]))
   );
+  if (checkList.length === 0) return board;
+
   checkList.forEach(([i, j]) => {
     board = CheckReverse(board, i, j, player)
   });

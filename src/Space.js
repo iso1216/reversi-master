@@ -1,50 +1,33 @@
 import { Box, Button } from "@mui/material";
 
-function Space({row, cell, board, onClick}){
+function Space({rowIndex, cellIndex, cell, onClick}){
   /*　マスの情報　*/
   return (
-    <Box sx={{ border: '1px solid #000', backgroundColor: '#009a00' }}>
-    <Button disabled={board[row][cell] !== 'pick'}
-      onClick={() => onClick(row,cell)}
+    <Box sx={{ border: '1px solid #444', backgroundColor: '#009a00' }}>
+    <Button disabled={cell !== 'pick'}
+      onClick={() => onClick(rowIndex,cellIndex
+  )}
       disableRipple
       sx={{
       float: 'left',
       lineHeight: "34px",
-      height: "70px",
+      height: 65,
       mr: "-1px",
       mt: "-1px",
       p: 0,
       borderRadius: 0,
       textAlign: 'center',
-      width: "70px",
+      width: 65,
     }}>
-      {board[row][cell] === 'pick' ? 
-        <Box sx={{
-            width: 10,
-            height: 10,
-            backgroundColor: 'aliceblue',
-            borderRadius: '50%',
-          }}
-        ></Box> :
-        board[row][cell] === false ? 
-        <Box sx={{
-            width: 50,
-            height: 50,
-            backgroundColor: 'black',
-            borderRadius: '50%',
-            border: '1px solid gray',
-          }}
-        ></Box> :
-        board[row][cell] === true &&
-        <Box sx={{
-            width: 50,
-            height: 50,
-            backgroundColor: 'white',
-            borderRadius: '50%',
-            border: '1px solid gray',
-          }}
-        ></Box>
-      }
+      <Box sx={{
+          width: cell === 'pick' ? 8 : 50,
+          height: cell === 'pick' ? 8 : 50,
+          backgroundColor: cell === 'pick' ? 'whitesmoke' : cell === false ? 'black' : cell === true && 'white',
+          opacity: cell === 'pick' && 0.8,
+          borderRadius: '50%',
+          border: cell !== 'empty' && '1px solid gray',
+        }}
+      />
     </Button>
     </Box>
   );

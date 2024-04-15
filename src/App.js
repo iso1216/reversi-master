@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Home';
 import Game from './Game';
 import { Reverse } from './Reverse';
+import Result from './Result';
 
 const App = () => {
   const [board, setBoard] = useState(Array(8).fill(null).map(() => Array(8).fill("empty")));
@@ -11,7 +12,7 @@ const App = () => {
     const newBoard = board.map(row => 
       row.map(cell => cell === "pick" ? "empty" : cell)
     );
-    newBoard[i][j] = player;
+    if (isFinite(i)) newBoard[i][j] = player;
     setBoard(Reverse(newBoard,i,j,player));
     setPlayer(!player);
   }
@@ -34,7 +35,8 @@ const App = () => {
     <Router>
       <Routes>
         <Route expect path="/reversi-master" element={<Home startGame={startGame} />} />
-        <Route path="/game" element={<Game board={board} handleClick={handleClick} />} />
+        <Route path="/game" element={<Game board={board} handleClick={handleClick} player={player} />} />
+        <Route path="/result" element={<Result board={board} />} />
       </Routes>
     </Router>
   );

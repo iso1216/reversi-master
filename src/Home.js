@@ -5,12 +5,12 @@ import { Link as RouterLink } from "react-router-dom";
 const Home = ({startGame}) =>{
   return(
     <Box>
-			<Typography>オセロ</Typography>
+			<Typography>Reversi</Typography>
 			<Typography
 				onClick={() => startGame()}
 				component={RouterLink}
 				to={'/game'}
-			>スタート！！！</Typography>
+			>Play Game</Typography>
     </Box>
 	);
 }

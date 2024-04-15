@@ -8,7 +8,7 @@ const Board = ({board, onClick}) => {
     return board.map((row, rowIndex) => (
       <Box key={rowIndex} sx={{ display: 'flex' }}>
         {row.map((cell, cellIndex) => (
-          <Space key={cellIndex} row={rowIndex} cell={cellIndex} board={board} onClick={() => onClick(rowIndex, cellIndex)} />
+          <Space key={cellIndex} rowIndex={rowIndex} cellIndex={cellIndex} cell={cell} onClick={() => onClick(rowIndex, cellIndex)} />
         ))}
       </Box>
     ));
