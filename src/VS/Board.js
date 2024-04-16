@@ -15,7 +15,7 @@ const Board = ({board, onClick}) => {
   };
 
   return (
-    <Box sx={{border: '1px solid #444', mt: {md: 5, xs: 15}}}>
+    <Box sx={{border: '1px solid #444'}}>
       {renderBoard()}
     </Box>
   );

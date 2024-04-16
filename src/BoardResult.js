@@ -10,14 +10,17 @@ const BoardResult = ({board}) => {
 					alignItems: 'center',
 					border: '1px solid #444',
 					backgroundColor: '#009a00',
-					width: 65,
-					height: 65 }}>
+						minWidth: 0,
+						minHeight: 0,
+						height: {md: 100, sm: 60, xs: 38},
+						width: {md: 100, sm: 60, xs: 38},
+					}}>
 					<Box sx={{
-						width: 50,
-						height: 50,
+						width: {md: 65, sm: 40, xs: 25},
+						height: {md: 65, sm: 40, xs: 25},
 						backgroundColor: cell ? cell !== 'empty' && 'white' : 'black', // 条件に基づいて背景色を設定
 						borderRadius: '50%',
-						border: cell !== 'empty' && '2px solid gray',
+						border: cell !== 'empty' && '1px solid gray',
 					}}/>
 				</Box>
 			))}

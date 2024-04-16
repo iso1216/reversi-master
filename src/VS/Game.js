@@ -15,7 +15,7 @@ const Game = ({board, handleClick, player}) => {
 
   return(
 		<Box>
-      <Typography>Turn of {player ? "white" : "black"}</Typography>
+      <Typography variant="h4" sx={{mt: {md: 5, xs: 15}}}>Turn of {player ? "white" : "black"}</Typography>
 			<Board
         board={board}
         onClick={(i,j) => {handleClick(i,j); setFlg(0);}}
