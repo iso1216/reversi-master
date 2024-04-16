@@ -15,9 +15,9 @@ const BoardResult = ({board}) => {
 					<Box sx={{
 						width: 50,
 						height: 50,
-						backgroundColor: cell ? 'white' : 'black', // 条件に基づいて背景色を設定
+						backgroundColor: cell ? cell !== 'empty' && 'white' : 'black', // 条件に基づいて背景色を設定
 						borderRadius: '50%',
-						border: '2px solid gray',
+						border: cell !== 'empty' && '2px solid gray',
 					}}/>
 				</Box>
 			))}
