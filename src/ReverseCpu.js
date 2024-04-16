@@ -1,6 +1,21 @@
 import { CheckReverse } from "./CheckReverse";
 
-export const Reverse = (board, i, j, player) => {
+export const ReverseCpu = (board, player, flg, setFlg) => {
+  let pickList = [];
+  board.map((row, rowIndex) => 
+    row.map((cell, cellIndex) => cell === 'pick' && pickList.push([rowIndex, cellIndex]))
+  );
+  if (pickList.length === 0 && flg === Infinity) {setFlg(true); return board;}
+  else if (pickList.length === 0) {alert("相手がパスしました");return board;}
+
+  const randomIndex = Math.floor(Math.random() * pickList.length);
+  const i = pickList[randomIndex][0];
+  const j = pickList[randomIndex][1];
+  board[i][j] = player;
+  board = board.map(row => 
+    row.map(cell => cell === "pick" ? "empty" : cell)
+  );
+
   // 方向を定義: [x増分, y増分]
   const directions = [
     [-1, -1], // 上左
