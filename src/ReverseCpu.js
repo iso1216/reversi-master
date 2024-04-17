@@ -6,7 +6,21 @@ export const ReverseCpu = (board, player, flg, setFlg) => {
     row.map((cell, cellIndex) => cell === 'pick' && pickList.push([rowIndex, cellIndex]))
   );
   if (pickList.length === 0 && flg === Infinity) {setFlg(true); return board;}
-  else if (pickList.length === 0) {alert("相手がパスしました");return board;}
+  else if(!board.flat().some(cell => cell === "pick" || cell === "empty"))return;
+  else if (pickList.length === 0) {
+    alert("相手がパスしました");
+    let checkList = [];
+    board.map((row, rowIndex) => 
+      row.map((cell, cellIndex) => cell === !player && checkList.push([rowIndex, cellIndex]))
+    );
+    if (checkList.length === 0) return board;
+  
+    checkList.forEach(([i, j]) => {
+      board = CheckReverse(board, i, j, player)
+    });
+  
+    return board;  
+}
 
   const randomIndex = Math.floor(Math.random() * pickList.length);
   const i = pickList[randomIndex][0];
