@@ -1,6 +1,6 @@
 # MINE-SWEEPER
 
-Ver 1.0.1 (2024/4月時点)
+Ver 1.0.2 (2024/4月時点)
 
 - 作成したサイト：https://iso1216.github.io/reversi-master/
 
@@ -24,3 +24,4 @@ Ver 1.0.1 (2024/4月時点)
 
 - Ver 1.0　完成
 - Ver 1.0.1 バグの修正
+- Ver 1.0.2 バグの修正

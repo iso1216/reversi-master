@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/reversi-master/static/css/main.2b867eb5.css",
-    "main.js": "/reversi-master/static/js/main.5803f644.js",
+    "main.js": "/reversi-master/static/js/main.9f99b9a8.js",
     "static/js/787.c91d811f.chunk.js": "/reversi-master/static/js/787.c91d811f.chunk.js",
     "index.html": "/reversi-master/index.html",
     "main.2b867eb5.css.map": "/reversi-master/static/css/main.2b867eb5.css.map",
-    "main.5803f644.js.map": "/reversi-master/static/js/main.5803f644.js.map",
+    "main.9f99b9a8.js.map": "/reversi-master/static/js/main.9f99b9a8.js.map",
     "787.c91d811f.chunk.js.map": "/reversi-master/static/js/787.c91d811f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2b867eb5.css",
-    "static/js/main.5803f644.js"
+    "static/js/main.9f99b9a8.js"
   ]
 }

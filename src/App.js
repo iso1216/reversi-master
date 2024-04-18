@@ -27,6 +27,7 @@ const App = () => {
     setBoard(Reverse(newBoard,i,j,player));
     setPlayer(!player);
     setTimeout(() => {
+      if (!board.flat().some(cell => cell === "pick" || cell === "empty")) return;
       setBoard(ReverseCpu(newBoard,false,i,setFlg));
       setPlayer(true);
     }, 1000);
