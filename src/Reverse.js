@@ -19,7 +19,7 @@ export const Reverse = (board, i, j, player) => {
     let y = j + dy;
     let tilesToFlip = [];
 
-    // 盤面の範囲内かつ反対のプレイヤーの石が続く間ループ
+    // 盤面の範囲内かつ相手プレイヤーの石が続く間ループ
     while (x >= 0 && x < 8 && y >= 0 && y < 8 && board[x][y] === !player) {
       tilesToFlip.push([x, y]);
       x += dx;

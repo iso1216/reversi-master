@@ -9,30 +9,40 @@ import { ReverseCpu } from './ReverseCpu';
 import { Box } from '@mui/material';
 
 const App = () => {
+  // 盤と手番の作成
   const [board, setBoard] = useState(Array(8).fill(null).map(() => Array(8).fill("empty")));
   const [player, setPlayer] = useState(true);
+
+  // 対人用handleClick
   const handleClick = (i,j) => {
+    // pickの削除
     const newBoard = board.map(row => 
       row.map(cell => cell === "pick" ? "empty" : cell)
     );
+    // passしたかの判定
     if (isFinite(i)) newBoard[i][j] = player;
     setBoard(Reverse(newBoard,i,j,player));
     setPlayer(!player);
   }
   const handleClickCpu = (i,j,setFlg) => {
+    // pickの削除
     const newBoard = board.map(row => 
       row.map(cell => cell === "pick" ? "empty" : cell)
     );
+    // passしたかの判定
     if (isFinite(i)) newBoard[i][j] = true;
     setBoard(Reverse(newBoard,i,j,player));
     setPlayer(!player);
+    // CPUの操作
     setTimeout(() => {
+      // 盤面が埋まっていた場合return
       if (!board.flat().some(cell => cell === "pick" || cell === "empty")) return;
       setBoard(ReverseCpu(newBoard,false,i,setFlg));
       setPlayer(true);
     }, 1000);
   }
 
+  // 盤面の初期化
   const startGame = () => {
     const newBoard = Array(8).fill(null).map(() => Array(8).fill("empty"));
     newBoard[3][3] = true;

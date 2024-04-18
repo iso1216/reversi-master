@@ -3,6 +3,7 @@ import { Box, Button, Typography, useMediaQuery } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 
 const Home = ({startGame}) =>{
+	// レスポンシブ対応のための変数
 	const matches = useMediaQuery("(min-width:500px)");
 
   return(

@@ -17,6 +17,7 @@ function Space({rowIndex, cellIndex, cell, onClick}){
         width: {md: 100, sm: 60, xs: 38}
       }}>
       <Box sx={{
+          // マスの状態に合わせて表示を変化
           width: cell === 'pick' ? {md: 10, sm: 7, xs: 4} : {md: 65, sm: 40, xs: 25},
           height: cell === 'pick' ? {md: 10, sm: 7, xs: 4} : {md: 65, sm: 40, xs: 25},
           backgroundColor: cell === 'pick' ? 'whitesmoke' : cell === false ? 'black' : cell === true && 'white',

@@ -2,26 +2,30 @@ import { CheckReverse } from "./CheckReverse";
 
 export const ReverseCpu = (board, player, flg, setFlg) => {
   let pickList = [];
+  // 置ける場所の探索
   board.map((row, rowIndex) => 
     row.map((cell, cellIndex) => cell === 'pick' && pickList.push([rowIndex, cellIndex]))
   );
-  if (pickList.length === 0 && flg === Infinity) {setFlg(true); return board;}
+
+  if (pickList.length === 0 && flg === Infinity) {setFlg(true); return board;} // CPUの置ける場所がないかつ、プレイヤーがpassしていた場合flgを変更してreturn
+  // CPUが置ける場所がない場合の処理
   else if (pickList.length === 0) {
     alert("相手がパスしました");
+    // プレイヤーが置ける場所の判定
     let checkList = [];
     board.map((row, rowIndex) => 
       row.map((cell, cellIndex) => cell === !player && checkList.push([rowIndex, cellIndex]))
     );
     if (checkList.length === 0) return board;
-  
     checkList.forEach(([i, j]) => {
       board = CheckReverse(board, i, j, player)
     });
-  
-    return board;  
-}
 
-  const randomIndex = Math.floor(Math.random() * pickList.length);
+    return board;  
+  }
+
+  // CPUが置ける場所の処理
+  const randomIndex = Math.floor(Math.random() * pickList.length); // 石が置ける場所からランダムで一か所を選択
   const i = pickList[randomIndex][0];
   const j = pickList[randomIndex][1];
   board[i][j] = player;
